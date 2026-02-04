@@ -61,7 +61,7 @@ A hash function is used to hash a long URL to a short URL, also known as `hashVa
 - **hashValue**:
   - Consists of characters from `[0-9, a-z, A-Z]`, containing 10 + 26 + 26 = 62 possible characters.
   - As we need to support more than 365 billion URLs, we calculate:  
-    \(62^7 = 3{,}521{,}614{,}606{,}208 \approx 3.5\) trillion.
+    (62^7 = 3,521,614,606,208 approx 3.5) trillion.
   - So the length of `hashValue` is 7.
 
 We should implement a hash function that hashes a long URL to a 7-character string.

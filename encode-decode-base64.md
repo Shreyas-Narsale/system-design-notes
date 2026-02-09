@@ -43,7 +43,7 @@ Combined bits:
 ```
 
 ### Step 2: Split into 6-bit chunks
-Why 6-bit chunks? Because 2^6 = 64, so each chunk maps to one Base64 character.
+Why 6-bit chunks? for 64 unique keys, needed 6 bits : 2^6 = 64
 
 ```
 010011 010110 000101 101110

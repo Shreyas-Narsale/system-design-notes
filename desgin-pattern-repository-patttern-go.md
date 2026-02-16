@@ -4,7 +4,7 @@ Design Patterns in Go
 Repository Pattern
 ------------------
 
-Interview Answer: Explain Repository Pattern in Go with example
+Question: Explain Repository Pattern in Go with example
 
 The Repository Pattern separates business logic from data access by defining repository interfaces in the domain layer and implementing them in the infrastructure layer.
 This allows your services to work with data without knowing how it’s stored, making your code testable, database-independent, and easier to maintain.

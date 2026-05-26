@@ -1,0 +1,79 @@
+
+
+MasterCard Interview Prep Questions:
+t-t2, t2-t3, t3-t1 ( these are thread dependency with other thread) check if it form the cycle
+implement hashmp
+
+Manage round:
+more on arctiect of project
+java: concurrentHAshMp vs Hashmap
+how to avoid dupicates in kafka consumer
+why redis cluster
+exception handling in golang (panic -recover)
+java thread vs go thread vs os thread
+
+
+Tech 1:
+buy/sell program
+12 factor
+micro-services pattern
+micro-services vs monlithic
+go thread vs java thread
+second max salary from sql table
+
+Tech 2:
+Java-version differnce vs golang veriosn (java 21 vs go 21)
+12 factor
+Restful vs GRPC ( protocl level changes)
+kafka if unable to produce : ( if ack enable and duplicate how to avoid on producer end): indompotence
+if before commit : network issue : so duplicate issue( how to avoid): answer exactly one sematic, use upser
+
+10 parations - 1 consumer grp - 2 consumers ( what will happen)
+if incread to 5 consumer then what will happend ( rebalance and reassign)
+
+11 broker across 4 regions : how to divide them
+
+kafka -replica factor , replica sync
+
+word search problem:
+    Horizontally (left → right) across rows
+    Vertically (top ↓ bottom) across columns
+    Diagonally (top-left
+    bottom-right)
+
+    char[][] board = {
+    {'a', 'b', 'c'},
+    {'d', 'a', 'b'},
+    {'e', 'f', 'a'}
+    };
+    String word = "ab";
+
+find issue in code:
+    public class ThreadJoin {
+    
+        public static void main(String[] args) throws Exception {
+    
+            Thread t1 = new Thread(() -> {
+                System.out.println("T1 started");
+                try {
+                    Thread.currentThread().join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("T1 completed");
+            });
+    
+            t1.start();
+            t1.join();
+    
+            System.out.println("Main completed");
+        }
+    }
+
+
+preparation startergy:
+golang , java
+striver blind 75 
+sql 
+Desgin patterns
+resume ( past experience project)

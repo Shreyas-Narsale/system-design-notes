@@ -1,0 +1,10 @@
+
+
+Siemens Interview:
+
+test: go mcq base on map, array-slice , interface- nil , reflects any many more
+
+Desgin pattern : like factory , startgery , solid principals, intervals probelm meeting room,train at same time , golang sum-even probelm, enums in golang
+manager round: blub pesudoku question
+
+

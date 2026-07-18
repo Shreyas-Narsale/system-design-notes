@@ -1,0 +1,40 @@
+
+
+
+### Scalability:
+Vertical scaling (scale-up): more CPU/RAM/disk on the same node.
+Horizontal scaling (scale-out): more machines — add nodes and distribute the load.
+
+How to achieve it:
+    1. Statelessness 
+        - build Statelessness application using Redis, a DB, or a token (JWT).
+    
+    2. Load balancing
+        - Distribute traffic across instances (round-robin, least-connections, consistent hashing). 
+        ex. Nginx
+    
+    3. Horizontal partitioning (sharding)
+        - Split data across multiple DB nodes by a shard key (user_id, tenant_id, region) 
+    
+    4. Caching 
+        - CDN
+        - Redis
+    
+    5. Asynchronous processing / message queues
+        - Kafka
+
+    6. Database read replicas
+        - Writes go to a primary; reads get distributed across replicas.  
+
+    7. Microservices 
+        - Split a monolith into independently deployable, independently scalable services. 
+        - ex.The auth service can scale differently than the reporting service
+
+    8. Auto-scaling
+        - adds/removes instances automatically — Kubernetes HPA, 
+
+    9. Database indexing & query optimization
+
+Trade Off:
+  Scalability usually trades off against consistency and simplicity (CAP theorem territory). 
+  More nodes = more places things can go wrong = need for idempotency, retries, eventual consistency handling.

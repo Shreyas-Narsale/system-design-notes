@@ -1,0 +1,37 @@
+### Availability:
+    - is it reachable and responding right now
+
+How to achieve :
+    1. Redundancy (no single point of failure)
+        - Every critical component should have at least one backup that can take over.
+        - Multiple app server instances, multiple DB replicas, multiple availability zones. 
+        - If one dies, traffic reroutes to the others.
+
+    2. Failover mechanisms
+        Active-passive: standby node takes over when the active one fails 
+        Active-active: all nodes serve traffic simultaneously; if one fails, the others just absorb the load.
+    
+    3. Health checks + load balancer integration
+        LB continuously pings instances (/health endpoint). Unhealthy nodes get pulled out of rotation automatically
+    
+    4. multi-region deployment
+        Spread infra across data centers , so if something goes down other will manage
+        Multi-region also helps latency, but the primary driver here is availability.
+
+    5. Circuit breakers & timeouts
+        - Circuit breaker pattern: after N failures, "open" the circuit and fail fast for a cooldown period, instead of piling up slow/hanging requests.
+
+    6. Retries with backoff + idempotency
+        - retry failed request, but using idempotency make sure no duplication
+    
+    7. Rolling deployments / zero-downtime releases
+        - use Kubernetes rolling updates or blue-green deployments 
+    
+    8. Monitoring & alerting
+        - mantain Metrics, logs, uptime dashboards, alerts (Prometheus/Grafana, Datadog, etc.)
+    
+trade-off:
+    Consistency vs. Availability (CAP theorem)
+    During a network partition, pick one:
+        Strong consistency → some requests fail/wait (CP)
+        Always respond → might serve stale data (AP)

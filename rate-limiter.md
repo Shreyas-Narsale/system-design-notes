@@ -270,25 +270,37 @@ ex.2;
 
 formula:
 ```
-L       = request limit
-W       = window size
-t       = current time
-t0      = start time of current window
-Δt      = t - t0   (elapsed time in current window)
-C_prev  = request count in previous window
-C_curr  = request count in current window
+Initialize:
+    windowSize = time interval (e.g., 60 seconds)
+    maxRequests = allowed requests in the window
 
-Weight of previous window:
-weight = (W - Δt) / W
+    currentWindowStart = currentTime()
+    currentCount = 0
+    previousCount = 0
 
-Effective request count:
-effective = (C_prev * ((W - Δt) / W)) + C_curr
+Function allowRequest():
 
-Allow condition:
-if effective < L
-    allow request
-else
-    reject request
+    now = currentTime()
+
+    elapsed = now - currentWindowStart
+
+    // Move to the next window if needed
+    if elapsed >= windowSize:
+        previousCount = currentCount
+        currentCount = 0
+        currentWindowStart = now
+        elapsed = 0
+
+    // Calculate weighted count
+    weight = (windowSize - elapsed) / windowSize
+    estimatedCount = (previousCount * weight) + currentCount
+
+    if estimatedCount < maxRequests:
+        currentCount = currentCount + 1
+        return ALLOW
+    else:
+        return DENY
+
 ```
 
 ## Rate limiter in a distributed environment
